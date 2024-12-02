@@ -9,6 +9,9 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        sfpro: ['var(--font-sf)'],
+      },
       colors: {
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
@@ -49,6 +52,14 @@ const config: Config = {
           '3': 'hsl(var(--chart-3))',
           '4': 'hsl(var(--chart-4))',
           '5': 'hsl(var(--chart-5))',
+        },
+        color: {
+          bg: 'var(--color-bg)',
+          card: 'var(--color-card)',
+          stroke: 'var(--color-stroke)',
+          title: 'var(--color-title)',
+          subtitle: 'var(--color-subtitle)',
+          emoji: 'var(--color-emoji)',
         },
       },
       borderRadius: {
