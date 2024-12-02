@@ -2,8 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  font-family: Arial, Helvetica, sans-serif;
+body,
+* {
+  font-family: var(--font-sf);
 }
 
 @layer utilities {
@@ -39,6 +40,13 @@ body {
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
     --radius: 0.5rem;
+
+    --color-bg: #f4f5f6;
+    --color-card: #ffffff;
+    --color-stroke: #d9dbde;
+    --color-title: #1f1f1f;
+    --color-subtitle: #8a949e;
+    --color-emoji: #fee3a4;
   }
   .dark {
     --background: 240 10% 3.9%;
@@ -65,6 +73,13 @@ body {
     --chart-3: 30 80% 55%;
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
+
+    --color-bg: #090909;
+    --color-card: #141414;
+    --color-stroke: #242424;
+    --color-title: #cccccc;
+    --color-subtitle: #666666;
+    --color-emoji: #fee3a4;
   }
 }
 
@@ -73,6 +88,6 @@ body {
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-color-bg text-foreground;
   }
 }
