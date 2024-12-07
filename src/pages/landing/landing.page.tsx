@@ -2,95 +2,123 @@ import React, { type ReactElement } from 'react';
 import Image from 'next/image';
 
 import LandingCard from '@/components/common/landing-card.component';
+import { Button } from '@/components/ui/button';
+import { Card } from '@/components/ui/card';
+
+import Arrow from '~/public/images/top-right-arrow.svg';
+import Instagram from '~/public/images/instagram.svg';
 
 export default function LandingPage(): ReactElement {
   return (
-    <div className="p-4">
+    <div className="mx-auto mt-2 w-full max-w-[1700px]">
       <div className="grid grid-cols-12 rounded-3xl border border-color-stroke p-4">
         <div className="col-span-9 mr-4 flex flex-col gap-y-4">
-          <div className="flex justify-between gap-x-4">
+          <div className="flex gap-4">
             <LandingCard
               title={`Hi, I'm Taha 👋`}
               description="Lead product designer, currently working at Naqshava Tech"
-              className="h-[268px] bg-color-card md:min-w-[536px]"
+              className="flex-grow-[2] basis-1/2 bg-color-card"
             />
 
-            <div className="relative min-h-[268px] md:min-w-[260px]">
-              <Image
-                src="/images/landing-image-one.png"
-                alt="image"
-                fill
-                objectFit="cover"
-              />
+            <div className="relative flex-grow basis-1/4 rounded-3xl">
+              <Image src="/images/landing-image-one.png" alt="image" fill />
             </div>
 
-            <div className="relative min-h-[268px] md:min-w-[260px]">
-              <Image
-                src="/images/landing-image-one.png"
-                alt="image"
-                fill
-                objectFit="cover"
-              />
+            <div className="relative flex-grow basis-1/4 rounded-3xl">
+              <Image src="/images/landing-image-one.png" alt="image" fill />
             </div>
           </div>
 
-          <div className="flex justify-between gap-x-4">
-            <div className="relative min-h-[268px] md:min-w-[260px]">
-              <Image
-                src="/images/landing-image-one.png"
-                alt="image"
-                fill
-                objectFit="cover"
-              />
+          <div className="flex gap-4">
+            <div className="relative flex-grow md:h-[268px] md:basis-[calc(100%/4.5*1)]">
+              <Image src="/images/landing-image-one.png" alt="image" fill />
             </div>
 
             <LandingCard
-              title={`Hi, I'm Taha 👋`}
-              description="Passionate about design and enjoy solving problems."
-              className="h-[268px] bg-color-card md:min-w-[536px]"
+              title={`Passionate about design and enjoy solving problems.`}
+              heading="A B O U T"
+              className="relative flex-grow bg-color-card md:h-[268px] md:basis-[calc(100%/4.5*2)]"
+            >
+              <Button
+                variant="outline"
+                className="absolute bottom-6 right-8 flex h-12 w-12 items-center justify-center rounded-full bg-transparent"
+              >
+                <Arrow className="mb-1 mr-1" />
+              </Button>
+            </LandingCard>
+
+            <div className="relative flex-grow rounded-3xl md:h-[268px] md:basis-[calc(100%/4.5*1.5)]">
+              <Image src="/images/laptop.png" alt="image" fill />
+            </div>
+          </div>
+
+          <div className="flex gap-x-4">
+            <LandingCard
+              title={`Art Direction`}
+              heading="S E R V I C E S"
+              description="Get design tips & guide straight to your inbox for free!"
+              className="relative flex-grow bg-color-card md:h-[268px] md:basis-[calc(100%/4*2)]"
             />
 
-            <div className="relative min-h-[268px] md:min-w-[358px]">
-              <Image
-                src="/images/laptop.png"
-                alt="image"
-                fill
-                objectFit="cover"
-              />
-            </div>
+            <LandingCard
+              title={`Stack I use`}
+              className="relative flex-grow bg-color-card md:h-[268px] md:basis-[calc(100%/4*1.75)]"
+            />
+
+            <Card className="relative flex flex-grow items-center justify-center bg-color-card md:h-[268px] md:basis-[calc(100%/4*0.5)]">
+              <Button>switch</Button>
+            </Card>
           </div>
         </div>
 
         <div className="col-span-3">
-          {' '}
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolorum
-          dolorem mollitia molestiae error dolore perferendis saepe natus,
-          sapiente enim et quisquam laudantium ea libero? Cupiditate facilis
-          aliquam eaque quis voluptate magni, dolorum perspiciatis praesentium
-          alias, ipsum voluptas quos officiis quaerat rerum eos consectetur
-          corrupti perferendis iure omnis excepturi repellendus itaque. Tempora
-          magni deserunt dolores neque dicta, magnam, nam, et eum voluptatum
-          corrupti quisquam fugiat eaque quod modi ipsa officia aliquid aliquam
-          facilis necessitatibus voluptas minima. Alias autem, ex hic laborum
-          minus dicta aliquid. Facilis neque ipsa magnam laborum necessitatibus
-          exercitationem, modi quia voluptatibus blanditiis rem est sint quo
-          voluptatem sit excepturi recusandae? Culpa quidem recusandae maiores
-          dolore ullam repellendus totam beatae. Dolores aut ipsum nulla
-          suscipit tempora ducimus in unde voluptas ut doloremque autem illo
-          aliquam eum ullam, sunt placeat! Voluptatum corporis pariatur non vero
-          mollitia laborum maiores a expedita qui dolores alias, voluptatem
-          quibusdam nesciunt quidem explicabo eos est odit! Error quasi
-          voluptatem voluptas fuga labore, doloribus, officiis quam ea debitis
-          porro sint illo tempore nesciunt necessitatibus? Incidunt magnam
-          voluptas qui sint. Voluptas dolor vero ducimus adipisci reiciendis?
-          Minus consequatur repellendus quisquam nam eligendi impedit aliquid
-          harum delectus nostrum cum in libero totam quae explicabo, beatae esse
-          voluptate veritatis, dolor saepe laudantium veniam ipsam nesciunt sit
-          quod! Non omnis rerum aspernatur, repellat eius, cupiditate
-          consequatur animi quasi nemo numquam fugiat ratione velit error,
-          sapiente rem hic libero repudiandae neque? Odio accusamus earum
-          cupiditate vero omnis perspiciatis, maxime debitis et excepturi
-          assumenda facere veniam dolores esse deserunt tempora iusto nihil.
+          <div className="flex flex-col gap-y-4">
+            <div className="flex h-auto w-full flex-col gap-y-4">
+              <div className="flex w-full flex-wrap gap-x-4">
+                <Card className="flex h-20 w-20 flex-grow items-center justify-center rounded-3xl">
+                  <Instagram />
+                </Card>
+
+                <Card className="flex h-20 w-20 flex-grow items-center justify-center rounded-3xl">
+                  <Instagram />
+                </Card>
+
+                <Card className="flex h-20 w-20 flex-grow items-center justify-center rounded-3xl">
+                  <Instagram />
+                </Card>
+              </div>
+
+              <div className="flex w-full flex-wrap gap-x-4">
+                <Card className="flex h-20 w-20 flex-grow items-center justify-center rounded-3xl">
+                  <Instagram />
+                </Card>
+
+                <Card className="flex h-20 w-20 flex-grow items-center justify-center rounded-3xl">
+                  <Instagram />
+                </Card>
+
+                <Card className="flex h-20 w-20 flex-grow items-center justify-center rounded-3xl">
+                  <Instagram />
+                </Card>
+              </div>
+            </div>
+
+            <div className="relative w-full flex-grow rounded-3xl md:h-[360px]">
+              <Image src="/images/laptop.png" alt="image" fill />
+            </div>
+
+            <LandingCard
+              title={`Passionate about design and enjoy solving problems.`}
+              className="relative bg-color-card"
+            >
+              <Button
+                variant="outline"
+                className="absolute bottom-4 flex items-center justify-center rounded-2xl bg-transparent md:w-[280px]"
+              >
+                Copy email
+              </Button>
+            </LandingCard>
+          </div>
         </div>
       </div>
     </div>
