@@ -1,5 +1,4 @@
 import React, { type ReactNode, type ReactElement } from 'react';
-import classNames from 'classnames';
 
 import {
   Card,
@@ -17,7 +16,7 @@ interface Props {
   className?: string;
 }
 
-export default function LandingCard({
+export default function TextCard({
   children,
   heading,
   description,
@@ -26,32 +25,19 @@ export default function LandingCard({
 }: Props): ReactElement {
   return (
     <Card className={`rounded-3xl ${className}`}>
-      <CardHeader
-        className={classNames('md:px-8 md:py-16', {
-          'md:py-8': heading,
-        })}
-      >
+      <CardHeader className="gap-y-0 lg:p-8">
         {(heading?.length ?? 0) > 0 && (
           <CardDescription className="text-base text-color-subtitle">
             {heading}
           </CardDescription>
         )}
 
-        <CardTitle
-          className={classNames('text-3xl font-semibold text-color-title', {
-            'md:pt-5': heading,
-            'md:pb-4': !heading,
-          })}
-        >
+        <CardTitle className="pt-6 text-3xl font-semibold text-color-title">
           {title}
         </CardTitle>
 
         {(description?.length ?? 0) > 0 && (
-          <CardDescription
-            className={classNames('text-2xl text-color-subtitle', {
-              'md:pt-4': heading,
-            })}
-          >
+          <CardDescription className="pt-5 text-2xl text-color-subtitle">
             {description}
           </CardDescription>
         )}
