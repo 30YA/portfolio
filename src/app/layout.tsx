@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import localFont from 'next/font/local';
 
 import { ThemeProvider } from '@/components/common/theme-provider';
+
 import './globals.css';
 
 const sfPro = localFont({
@@ -46,16 +47,19 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="relative">
       <body className={`${sfPro.variable} antialiased`}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          {children}
-        </ThemeProvider>
+        <div className="pointer-events-none absolute top-0 z-[4] h-full w-full bg-[url('https://framerusercontent.com/images/rR6HYXBrMmX4cRpXfXUOvpvpB0.png')] bg-noise bg-repeat opacity-[0.08]"></div>
+        <div className="m-4 min-h-[calc(100vh_-_32px)] w-[calc(100%_-_32px)] rounded-[40px] border-[2px] border-color-stroke p-3 md-max:m-2 md-max:w-[calc(100%_-_16px)] md-max:p-2">
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            {children}
+          </ThemeProvider>
+        </div>
       </body>
     </html>
   );

@@ -5,8 +5,14 @@
 body,
 * {
   font-family: var(--font-sf);
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
+*::-webkit-scrollbar {
+  display: none;
+}
 @layer utilities {
   .text-balance {
     text-wrap: balance;
@@ -90,4 +96,22 @@ body,
   body {
     @apply bg-color-bg text-foreground;
   }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  color: var(--color-title);
+}
+
+.about-swiper .swiper-pagination {
+  @apply !absolute !bottom-0 !left-auto right-0 !w-fit rounded-full bg-color-bg p-1 pt-0 dark:bg-color-stroke;
+}
+
+.swiper-pagination-bullet-active {
+  @apply !bg-color-title;
 }
