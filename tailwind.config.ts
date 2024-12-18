@@ -5,10 +5,14 @@ const config: Config = {
   content: [
     './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/modules/**/*.{js,ts,jsx,tsx,mdx}',
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
     extend: {
+      backgroundSize: {
+        noise: '64px', // Custom size (50% of the container)
+      },
       fontFamily: {
         sfpro: ['var(--font-sf)'],
       },
@@ -67,8 +71,45 @@ const config: Config = {
         md: 'calc(var(--radius) - 2px)',
         sm: 'calc(var(--radius) - 4px)',
       },
-      maxWidth: {
-        'screen-2xl': '1700px', // Define your custom breakpoint
+      animation: {
+        enter: 'fadeInbottom 400ms ease-out',
+        leave: 'fadeOut 400ms ease-in forwards',
+      },
+      keyframes: {
+        fadeInbottom: {
+          '0%': {
+            opacity: '0',
+            transform: 'translateY(5rem)',
+          },
+          '100%': {
+            opacity: '1',
+            transform: 'translateY(0)',
+          },
+        },
+        fadeOut: {
+          '0%': {
+            opacity: '1',
+          },
+          '100%': {
+            opacity: '0',
+          },
+        },
+      },
+      screens: {
+        'sm-max': { max: '640px' },
+        // => @media (max-width: 640px) { ... }
+
+        'md-max': { max: '768px' },
+        // => @media (max-width: 768px) { ... }
+
+        'lg-max': { max: '1024px' },
+        // => @media (max-width: 1024px) { ... }
+
+        'xl-max': { max: '1280px' },
+        // => @media (max-width: 1280px) { ... }
+
+        '2xl-max': { max: '1536px' },
+        // => @media (max-width: 1536px) { ... }
       },
     },
   },
