@@ -1,8 +1,8 @@
 'use client';
 import React from 'react';
 
-import LandingPage from '@/pages/landing';
+import LandingModule from '@/modules/landing';
 
 export default function Home() {
-  return <LandingPage />;
+  return <LandingModule />;
 }
