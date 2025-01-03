@@ -26,11 +26,14 @@ function AboutModule() {
       </button>
       <div className="flex gap-4 md-max:flex-col">
         <div className="flex w-[calc(50%_-_8px)] flex-grow flex-col gap-4 md-max:w-full">
-          <CardComponent header="What I'm about?">
+          <CardComponent
+            className="md:h-[432px] md-max:h-auto"
+            header="What I'm about?"
+          >
             <h3 className="mb-6 text-base font-normal text-color-subtitle">
               {'My Story'.toLocaleUpperCase()}
             </h3>
-            <p className="mt-2 text-xl">
+            <p className="mt-2 line-clamp-[7] text-xl leading-8">
               Im Taha, Product Designer with solid expertise in UI/UX. The
               design is very simple, so it is very complex, and I seriously pay
               attention to the full details of everything, because the details
@@ -39,12 +42,18 @@ function AboutModule() {
               projects.
             </p>
           </CardComponent>
-          <CardComponent className="!pb-0" title="what i do best">
+          <CardComponent
+            className="md:h-[248px] md-max:h-auto"
+            title="what i do best"
+          >
             <Slider />
           </CardComponent>
         </div>
         <div className="flex w-[calc(50%_-_8px)] flex-grow flex-col gap-4 md-max:w-full">
-          <CardComponent title="education">
+          <CardComponent
+            className="overflow-y-auto md:h-[192px] md-max:h-auto"
+            title="education"
+          >
             <LineWithTitles
               className="mt-0"
               title="Bachelor of Arts"
@@ -56,7 +65,10 @@ function AboutModule() {
               detail="2021 - 2022"
             />
           </CardComponent>
-          <CardComponent title="experience">
+          <CardComponent
+            className="overflow-y-auto md:h-[488px] md-max:h-auto"
+            title="experience"
+          >
             <LineWithTitles
               className="mt-0"
               title="Design Lead at Mano"

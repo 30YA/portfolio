@@ -32,22 +32,24 @@ function Slider() {
     },
   };
   return (
-    <Swiper
-      pagination={pagination}
-      modules={[Pagination]}
-      className="mySwiper about-swiper !relative mb-5"
-    >
-      {whatIdoMock.map((item, index) => (
-        <SwiperSlide key={index} className="cursor-grab">
-          <h3 className="text-[26px] font-semibold text-color-title">
-            {item.title}
-          </h3>
-          <p className="mb-7 mt-4 text-xl font-normal text-color-title">
-            {item.description}
-          </p>
-        </SwiperSlide>
-      ))}
-    </Swiper>
+    <div className="relative">
+      <Swiper
+        pagination={pagination}
+        modules={[Pagination]}
+        className="mySwiper about-swiper !static mb-5"
+      >
+        {whatIdoMock.map((item, index) => (
+          <SwiperSlide key={index} className="cursor-grab">
+            <h3 className="text-[26px] font-semibold text-color-title">
+              {item.title}
+            </h3>
+            <p className="mb-7 mt-4 line-clamp-3 h-[84px] text-xl font-normal text-color-title">
+              {item.description}
+            </p>
+          </SwiperSlide>
+        ))}
+      </Swiper>
+    </div>
   );
 }
 

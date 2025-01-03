@@ -17,7 +17,7 @@ import Sun from '~/public/svg/sun-fill.svg';
 
 export default function MobileVersion(): ReactElement {
   return (
-    <div className="mx-auto flex max-w-[450px] flex-col gap-y-3 p-3">
+    <div className="mx-auto flex max-w-[450px] flex-col gap-y-3 p-3 md:hidden">
       <Card className="flex h-[200px] flex-col gap-y-6 rounded-3xl bg-color-card px-6 py-9">
         <CardTitle className="text-2xl font-semibold text-color-title">
           Hi, I&apos;m Taha 👋

@@ -35,7 +35,7 @@ export default function CardComponent({
         <h3
           className={classNames(
             'mb-6 text-base font-normal text-color-subtitle',
-            { 'mt-[6px]': !header },
+            // { 'mt-[6px]': !header },
             titleClassName
           )}
         >

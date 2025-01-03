@@ -13,6 +13,7 @@ body,
 *::-webkit-scrollbar {
   display: none;
 }
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;
@@ -109,7 +110,7 @@ p {
 }
 
 .about-swiper .swiper-pagination {
-  @apply !absolute !bottom-0 !left-auto right-0 !w-fit rounded-full bg-color-bg p-1 pt-0 dark:bg-color-stroke;
+  @apply !absolute !bottom-4 !left-auto right-0 !w-fit rounded-full bg-color-bg p-1 pt-0 dark:bg-color-stroke md-max:!-bottom-2;
 }
 
 .swiper-pagination-bullet-active {
