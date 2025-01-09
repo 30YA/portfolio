@@ -1,8 +1,9 @@
 import React, { type ReactElement } from 'react';
 import Image from 'next/image';
-import { Switch } from '@radix-ui/react-switch';
 import Link from 'next/link';
+import { useTheme } from 'next-themes';
 
+import { Switch } from '@/components/ui/switch';
 import {
   Card,
   CardTitle,
@@ -11,6 +12,7 @@ import {
 } from '@/components/ui/card';
 import TextCard from '@/components/common/text-card.component';
 import { Button } from '@/components/ui/button';
+import LogoSlider from '@/components/common/logo-slider';
 
 import Arrow from '~/public/images/top-right-arrow.svg';
 // import Sun from '~/public/svg/sun-fill.svg';
@@ -22,6 +24,12 @@ import GmailLogo from '~/public/assets/svg/gmail.svg';
 import SpotifyLogo from '~/public/assets/svg/spotify.svg';
 
 export default function DesktopVersion(): ReactElement {
+  const { setTheme, theme } = useTheme();
+  const themeChanger = (e: boolean) => {
+    if (e) setTheme('dark');
+    else setTheme('light');
+  };
+
   return (
     <div className="flex w-full animate-enter items-center justify-center p-4 md-max:hidden lg-max:overflow-scroll">
       <div className="flex h-full w-full gap-x-4 xl-max:flex-col">
@@ -75,7 +83,7 @@ export default function DesktopVersion(): ReactElement {
           </div>
 
           <div className="flex h-[268px] w-full gap-4">
-            <div className="group relative w-[278px] cursor-pointer overflow-hidden rounded-[32px]">
+            <div className="group relative w-[278px] grow cursor-pointer overflow-hidden rounded-[32px]">
               <Link href="/BoostPro">
                 <Image
                   className="transform transition-transform duration-700 group-hover:scale-110"
@@ -132,25 +140,27 @@ export default function DesktopVersion(): ReactElement {
               title={`Art Direction`}
               heading="S E R V I C E S"
               description="Get design tips & guide straight to your inbox for free!"
-              className="relative flex-grow bg-color-card md:h-[268px] md:basis-[calc(100%/4*2)]"
+              className="relative line-clamp-3 flex-grow bg-color-card md:h-[268px] md:basis-[calc(100%/4*2)]"
             />
 
-            <Card className="flex h-full flex-grow-[2] basis-1/2 flex-col gap-y-16 rounded-3xl bg-color-card px-6 pt-10">
-              <CardTitle className="h-full px-2 text-3xl font-semibold text-color-title">
-                Stack I use
-              </CardTitle>
+            <Card className="flex h-full max-w-[50%] flex-grow-[2] basis-1/2 flex-col gap-y-16 rounded-3xl bg-color-card px-6 pt-10">
+              <div className="flex h-full flex-col justify-between">
+                <CardTitle className="px-2 text-3xl font-semibold text-color-title">
+                  Stack I use
+                </CardTitle>
 
-              <CardContent className="h-full p-0">
-                {/* <div className="flex h-20 w-20 items-center justify-center rounded-xl bg-color-stroke">
-                  .
-                </div> */}
-              </CardContent>
+                <CardContent className="mb-12 p-0">
+                  <LogoSlider />
+                </CardContent>
+              </div>
             </Card>
 
-            <Card className="relative flex flex-grow items-center justify-center rounded-[32px] bg-color-card px-8 md:h-[268px] md:basis-[calc(100%/4*0.5)]">
-              <Switch className="h-14 w-full">
-                {/* <Sun className="ml-[7.5px] mt-2" /> */}
-              </Switch>
+            <Card className="relative flex shrink-0 flex-grow items-center justify-center rounded-[32px] bg-color-card px-8 md:h-[268px] md:basis-[calc(100%/4*0.5)]">
+              <Switch
+                defaultChecked={theme === 'dark'}
+                onCheckedChange={themeChanger}
+                checked={theme === 'dark'}
+              />
             </Card>
           </div>
         </div>
@@ -159,19 +169,19 @@ export default function DesktopVersion(): ReactElement {
           <div className="flex flex-col gap-4">
             <div className="flex gap-4">
               <Link href="#">
-                <Card className="flex h-20 w-20 grow items-center justify-center rounded-3xl">
+                <Card className="flex h-20 w-20 grow items-center justify-center rounded-3xl transition-colors hover:bg-red-400">
                   <DribbbleLogo />
                 </Card>
               </Link>
 
               <Link href="#">
-                <Card className="flex h-20 w-20 grow items-center justify-center rounded-3xl">
+                <Card className="flex h-20 w-20 grow items-center justify-center rounded-3xl transition-colors hover:bg-orange-400">
                   <InstagramLogo />
                 </Card>
               </Link>
 
               <Link href="#">
-                <Card className="flex h-20 w-20 grow items-center justify-center rounded-3xl">
+                <Card className="flex h-20 w-20 grow items-center justify-center rounded-3xl transition-colors hover:bg-blue-500">
                   <BehanceLogo />
                 </Card>
               </Link>
@@ -179,19 +189,19 @@ export default function DesktopVersion(): ReactElement {
 
             <div className="flex gap-4">
               <Link href="#">
-                <Card className="flex h-20 w-20 grow items-center justify-center rounded-3xl">
+                <Card className="flex h-20 w-20 grow items-center justify-center rounded-3xl transition-colors hover:bg-green-500">
                   <LinkedinLogo />
                 </Card>
               </Link>
 
               <Link href="#">
-                <Card className="flex h-20 w-20 grow items-center justify-center rounded-3xl">
+                <Card className="flex h-20 w-20 grow items-center justify-center rounded-3xl transition-colors hover:bg-yellow-500">
                   <GmailLogo />
                 </Card>
               </Link>
 
               <Link href="#">
-                <Card className="flex h-20 w-20 grow items-center justify-center rounded-3xl">
+                <Card className="flex h-20 w-20 grow items-center justify-center rounded-3xl transition-colors hover:bg-gray-500">
                   <SpotifyLogo />
                 </Card>
               </Link>

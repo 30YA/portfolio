@@ -1,7 +1,9 @@
 import React, { type ReactElement } from 'react';
 import Image from 'next/image';
-import { Switch } from '@radix-ui/react-switch';
+import Link from 'next/link';
+import { useTheme } from 'next-themes';
 
+import { Switch } from '@/components/ui/switch';
 import {
   Card,
   CardTitle,
@@ -10,12 +12,21 @@ import {
 } from '@/components/ui/card';
 import TextCard from '@/components/common/text-card.component';
 import { Button } from '@/components/ui/button';
+import LogoSlider from '@/components/common/logo-slider';
 
 import Arrow from '~/public/images/top-right-arrow.svg';
-import Instagram from '~/public/images/instagram.svg';
-import Sun from '~/public/svg/sun-fill.svg';
+import DribbbleLogo from '~/public/assets/svg/dribbble.svg';
+import InstagramLogo from '~/public/assets/svg/instagram.svg';
+import BehanceLogo from '~/public/assets/svg/behance-line.svg';
+import LinkedinLogo from '~/public/assets/svg/linkedin.svg';
+import GmailLogo from '~/public/assets/svg/gmail.svg';
 
 export default function MobileVersion(): ReactElement {
+  const { setTheme, theme } = useTheme();
+  const themeChanger = (e: boolean) => {
+    if (e) setTheme('dark');
+    else setTheme('light');
+  };
   return (
     <div className="mx-auto flex max-w-[450px] flex-col gap-y-3 p-3 md:hidden">
       <Card className="flex h-[200px] flex-col gap-y-6 rounded-3xl bg-color-card px-6 py-9">
@@ -37,26 +48,46 @@ export default function MobileVersion(): ReactElement {
       >
         <Button
           variant="outline"
-          className="absolute bottom-6 right-8 flex h-10 w-10 items-center justify-center rounded-full bg-transparent"
+          className="absolute bottom-6 right-8 flex h-12 w-12 items-center justify-center rounded-full bg-transparent"
         >
-          <Arrow className="mb-1 mr-1" />
+          <Arrow className="h-5 w-5 text-color-subtitle" />
         </Button>
       </TextCard>
 
-      <div className="relative h-[244px] w-full">
-        <Image src="/images/laptop.png" alt="image" fill />
+      <div className="group relative h-[244px] w-full overflow-hidden rounded-[32px]">
+        <Link href="/BoostPro">
+          <Image
+            src="/images/landing-image-one.png"
+            alt="image"
+            className="transform transition-transform duration-700 group-hover:scale-110"
+            objectFit="cover"
+            fill
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+            <div className="absolute bottom-4 flex w-full items-center justify-between px-4">
+              <p className="text-xl text-white">Boost Pro</p>
+              <Arrow className="h-5 w-5 text-white transition-transform duration-700 group-hover:rotate-45" />
+            </div>
+          </div>
+        </Link>
       </div>
 
-      <div className="relative h-[244px] w-full">
-        <Image src="/images/laptop.png" alt="image" fill />
-      </div>
-
-      <div className="relative h-[244px] w-full">
-        <Image src="/images/laptop.png" alt="image" fill />
-      </div>
-
-      <div className="relative h-[244px] w-full">
-        <Image src="/images/laptop.png" alt="image" fill />
+      <div className="group relative h-[244px] w-full overflow-hidden rounded-[32px]">
+        <Link href="/BoostPro">
+          <Image
+            className="transform transition-transform duration-700 group-hover:scale-110"
+            src="/assets/jpg/product-pic.jpg"
+            alt="image"
+            objectFit="cover"
+            fill
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+            <div className="absolute bottom-4 flex w-full items-center justify-between px-4">
+              <p className="text-xl text-white">Boost Pro</p>
+              <Arrow className="h-5 w-5 text-white transition-transform duration-700 group-hover:rotate-45" />
+            </div>
+          </div>
+        </Link>
       </div>
 
       <div className="flex w-full gap-x-3">
@@ -66,16 +97,16 @@ export default function MobileVersion(): ReactElement {
           </CardTitle>
 
           <CardContent className="h-full p-0">
-            <div className="flex h-20 w-20 items-center justify-center rounded-xl bg-color-stroke">
-              .
-            </div>
+            <LogoSlider />
           </CardContent>
         </Card>
 
         <Card className="relative flex w-1/3 items-center justify-center rounded-3xl bg-color-card">
-          <Switch className="h-14 w-full">
-            <Sun className="ml-[7.5px] mt-2" />
-          </Switch>
+          <Switch
+            defaultChecked={theme === 'dark'}
+            onCheckedChange={themeChanger}
+            checked={theme === 'dark'}
+          />
         </Card>
       </div>
 
@@ -104,23 +135,23 @@ export default function MobileVersion(): ReactElement {
 
       <div className="flex w-full gap-x-2">
         <Card className="flex h-16 w-full items-center justify-center rounded-xl">
-          <Instagram />
+          <InstagramLogo />
         </Card>
 
         <Card className="flex h-16 w-full items-center justify-center rounded-xl">
-          <Instagram />
+          <DribbbleLogo />
         </Card>
 
         <Card className="flex h-16 w-full items-center justify-center rounded-xl">
-          <Instagram />
+          <BehanceLogo />
         </Card>
 
         <Card className="flex h-16 w-full items-center justify-center rounded-xl">
-          <Instagram />
+          <LinkedinLogo />
         </Card>
 
         <Card className="flex h-16 w-full items-center justify-center rounded-xl">
-          <Instagram />
+          <GmailLogo />
         </Card>
       </div>
     </div>

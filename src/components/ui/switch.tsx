@@ -5,25 +5,30 @@ import * as SwitchPrimitives from '@radix-ui/react-switch';
 
 import { cn } from '@/lib/utils';
 
+import SunIcon from '~/public/assets/svg/sun-icon.svg';
+import MoonIcon from '~/public/assets/svg/moon-icon.svg';
+
 const Switch = React.forwardRef<
   React.ElementRef<typeof SwitchPrimitives.Root>,
   React.ComponentPropsWithoutRef<typeof SwitchPrimitives.Root>
->(({ className, children, ...props }, ref) => (
+>(({ className, ...props }, ref) => (
   <SwitchPrimitives.Root
+    dir="rtl"
     className={cn(
-      'peer inline-flex h-5 w-9 shrink-0 cursor-pointer items-center rounded-full border-2 border-transparent shadow-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:bg-primary data-[state=unchecked]:bg-input',
+      'dark:data-[state=checked]:bg-black-1100 peer relative inline-flex h-8 w-16 shrink-0 cursor-pointer items-center rounded-full border-2 border-transparent transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-950 focus-visible:ring-offset-2 focus-visible:ring-offset-white disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:bg-gray-900 data-[state=unchecked]:bg-gray-200 dark:focus-visible:ring-gray-300 dark:focus-visible:ring-offset-gray-950 dark:data-[state=unchecked]:bg-gray-50',
       className
     )}
     {...props}
     ref={ref}
   >
+    <SunIcon className="absolute left-1 z-10" />
+    <MoonIcon className="absolute right-2 z-10" />
     <SwitchPrimitives.Thumb
+      dir="rtl"
       className={cn(
-        'pointer-events-none block h-10 w-10 rounded-full bg-background shadow-lg ring-0 transition-transform data-[state=checked]:translate-x-14 data-[state=unchecked]:translate-x-0'
+        'pointer-events-none block h-7 w-7 !-translate-x-8 rounded-full bg-white shadow-lg ring-0 transition-transform data-[state=checked]:!translate-x-0 data-[state=unchecked]:translate-x-0'
       )}
-    >
-      {children}
-    </SwitchPrimitives.Thumb>
+    ></SwitchPrimitives.Thumb>
   </SwitchPrimitives.Root>
 ));
 Switch.displayName = SwitchPrimitives.Root.displayName;
