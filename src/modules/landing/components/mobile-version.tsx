@@ -28,7 +28,7 @@ export default function MobileVersion(): ReactElement {
     else setTheme('light');
   };
   return (
-    <div className="mx-auto flex max-w-[450px] flex-col gap-y-3 p-3 md:hidden">
+    <div className="mx-auto flex max-w-[450px] animate-enter flex-col gap-y-3 p-3 md:hidden">
       <Card className="flex h-[200px] flex-col gap-y-6 rounded-3xl bg-color-card px-6 py-9">
         <CardTitle className="text-2xl font-semibold text-color-title">
           Hi, I&apos;m Taha 👋
@@ -39,20 +39,22 @@ export default function MobileVersion(): ReactElement {
         </CardDescription>
       </Card>
 
-      <TextCard
-        title={`Passionate about design and enjoy solving problems.`}
-        heading="A B O U T"
-        className="relative h-[200px] bg-color-card"
-        headingClassName="text-sm"
-        titleClassName="text-xl pt-4"
-      >
-        <Button
-          variant="outline"
-          className="absolute bottom-6 right-8 flex h-12 w-12 items-center justify-center rounded-full bg-transparent"
+      <Link href="/about">
+        <TextCard
+          title={`Passionate about design and enjoy solving problems.`}
+          heading="A B O U T"
+          className="relative h-[200px] bg-color-card"
+          headingClassName="text-sm"
+          titleClassName="text-xl pt-4"
         >
-          <Arrow className="h-5 w-5 text-color-subtitle" />
-        </Button>
-      </TextCard>
+          <Button
+            variant="outline"
+            className="absolute bottom-6 right-8 flex h-12 w-12 items-center justify-center rounded-full bg-transparent"
+          >
+            <Arrow className="h-5 w-5 text-color-subtitle" />
+          </Button>
+        </TextCard>
+      </Link>
 
       <div className="group relative h-[244px] w-full overflow-hidden rounded-[32px]">
         <Link href="/BoostPro">
