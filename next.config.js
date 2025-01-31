@@ -13,7 +13,7 @@ module.exports = (phase, { defaultConfig }) => {
     env: {
       API_BASE_URL: process.env.API_BASE_URL,
       APP_URL: process.env.APP_URL,
-      SENTRY_DSN: process.env.SENTRY_DSN,
+      TARGET_URL: process.env.TARGET_URL,
     },
     images: {
       unoptimized: true,

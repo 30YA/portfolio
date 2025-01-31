@@ -3,6 +3,8 @@ import type { Metadata } from 'next';
 import localFont from 'next/font/local';
 
 import { ThemeProvider } from '@/components/common/theme-provider';
+import Providers from '@/components/common/provider';
+import { Toaster } from '@/components/ui/toaster';
 
 import './globals.css';
 
@@ -57,7 +59,10 @@ export default function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
-            {children}
+            <Providers>
+              {children}
+              <Toaster />
+            </Providers>
           </ThemeProvider>
         </div>
       </body>
