@@ -30,20 +30,20 @@ function Slider() {
     });
   }, [api]);
   return (
-    <Carousel setApi={setApi} className="min-h-[139px]">
+    <Carousel setApi={setApi} className="siiiii h-auto min-h-[132px]">
       <CarouselContent className="cursor-grab">
-        {data?.services.map((item, index) => (
+        {data?.about?.bests?.map((item, index) => (
           <CarouselItem key={index} className="flex flex-col gap-4">
             <h4 className="select-none text-[26px] font-medium text-color-title">
-              {item.servicesTitle}
+              {item.title}
             </h4>
             <p className="line-clamp-3 select-none text-xl text-color-subtitle">
-              {item.servicesDescription}
+              {item.description}
             </p>
           </CarouselItem>
         ))}
       </CarouselContent>
-      <div className="absolute -bottom-8 right-2 flex h-6 w-fit items-center justify-center gap-2 rounded-[50px] bg-color-bg p-2">
+      <div className="absolute -bottom-6 right-2 flex h-6 w-fit items-center justify-center gap-2 rounded-[50px] bg-color-bg p-2">
         {data?.services.map((_, index) => (
           <div
             key={index}

@@ -4,13 +4,66 @@ interface StacksType {
   userId: number;
   user: string | null;
 }
+
+interface AboutBests {
+  about: string | null;
+  aboutId: number | null;
+  id: number | null;
+  title: string | null;
+  description: string | null;
+}
+interface AboutEducation {
+  about: string | null;
+  aboutId: number | null;
+  id: number | null;
+  title: string | null;
+  timeline: string | null;
+}
+interface AboutExperiance {
+  about: string | null;
+  aboutId: number | null;
+  id: number | null;
+  title: string | null;
+  timeLine: string | null;
+}
 interface AboutType {
   id: number;
   story: string | null;
-  bests: string | null;
-  educations: string | null;
-  experiences: string | null;
+  bests: AboutBests[] | null;
+  educations: AboutEducation[] | null;
+  experiences: AboutExperiance[] | null;
   user: string | null;
+}
+interface Services {
+  id: number | null;
+  servicesDescription: string | null;
+  servicesTitle: string | null;
+  user: number | null;
+  userId: number | null;
+}
+
+export interface Projects {
+  companyName: string | null;
+  context: string | null;
+  description: string | null;
+  images: ProjectImages[] | null;
+  id: number | null;
+  mainImageUrl: string | null;
+  name: string | null;
+  projectType: string | null;
+  role: string | null;
+  timeLine: string | null;
+  tools: string | null;
+  url: string | null;
+  user: string | null;
+  userId: number | null;
+}
+
+interface ProjectImages {
+  id: number | null;
+  project: string | null;
+  projectId: number | null;
+  url: string | null;
 }
 export interface GetPortfolioResType {
   id: number;
@@ -20,15 +73,14 @@ export interface GetPortfolioResType {
   description: string | null;
   email: string | null;
   aboutDescription: string | null;
-  servicesTitle: string | null;
-  servicesDescription: string | null;
   linkedinUrl: string | null;
   instagramUrl: string | null;
   dribbleUrl: string | null;
   behanceUrl: string | null;
   spotifyUrl: string | null;
-  projects: [];
+  projects: Projects[];
   aboutId: number;
   about: AboutType;
   stacks: StacksType[];
+  services: Services[] | [];
 }

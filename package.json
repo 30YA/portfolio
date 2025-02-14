@@ -14,6 +14,7 @@
     "pre-commit": "next lint && next build"
   },
   "dependencies": {
+    "@radix-ui/react-scroll-area": "^1.2.3",
     "@radix-ui/react-slot": "^1.1.1",
     "@radix-ui/react-switch": "^1.1.1",
     "@radix-ui/react-toast": "^1.2.5",
@@ -32,6 +33,7 @@
     "prettier": "^3.4.1",
     "react": "^18",
     "react-dom": "^18",
+    "react-icons": "^5.4.0",
     "sass": "^1.82.0",
     "swiper": "^11.1.15",
     "tailwind-merge": "^2.5.5",

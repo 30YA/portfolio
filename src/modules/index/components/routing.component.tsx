@@ -1,11 +1,11 @@
 'use client';
 import React from 'react';
-import { useRouter } from 'next/navigation';
+// import { useRouter } from 'next/navigation';
 
 function Routing() {
-  const router = useRouter();
+  // const router = useRouter();
   setTimeout(() => {
-    router.replace(`/${process.env.TARGET_URL}`);
+    // router.replace(`/${process.env.TARGET_URL}`);
   });
   return <></>;
 }

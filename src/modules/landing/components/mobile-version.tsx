@@ -2,8 +2,8 @@ import React, { type ReactElement } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useTheme } from 'next-themes';
+import { useParams } from 'next/navigation';
 
-import { Switch } from '@/components/ui/switch';
 import {
   Card,
   CardTitle,
@@ -11,8 +11,11 @@ import {
   CardContent,
 } from '@/components/ui/card';
 import TextCard from '@/components/common/text-card.component';
-import { Button } from '@/components/ui/button';
 import CardComponent from '@/components/common/card';
+import useGetPortfolio from '@/api/get-portfolio/get-portfolio.api';
+import { Switch } from '@/components/ui/switch';
+import { Button } from '@/components/ui/button';
+import Copy from '@/components/common/copy';
 
 import Arrow from '~/public/images/top-right-arrow.svg';
 import DribbbleLogo from '~/public/assets/svg/dribbble-icon.svg';
@@ -23,37 +26,53 @@ import GmailLogo from '~/public/assets/svg/gmail-icon.svg';
 
 import Slider from './slider.component';
 import { Banner } from './banner.component';
+import MobileSkeleton from './mobile-skeleton';
 
 export default function MobileVersion(): ReactElement {
-  const targetUrl = process.env.TARGET_URL;
+  const currPath = useParams();
+  const targetUrl = currPath?.['target-url'] as string;
   const { setTheme, theme } = useTheme();
   const themeChanger = (e: boolean) => {
     if (e) setTheme('dark');
     else setTheme('light');
   };
+  const { data, isError, isSuccess, isFetching } = useGetPortfolio(
+    targetUrl || ''
+  );
+
+  if (isFetching) {
+    return <MobileSkeleton />;
+  }
+  if (isError && !isSuccess) {
+    return (
+      <h2 className="ml-10 mt-10 text-xl md-max:hidden">
+        something went wrong ... !
+      </h2>
+    );
+  }
   return (
     <div className="mx-auto flex max-w-[450px] animate-enter flex-col gap-y-3 p-3 md:hidden">
-      <Card className="flex h-[200px] flex-col gap-y-6 rounded-3xl bg-color-card px-6 py-9">
+      <Card className="flex min-h-[200px] flex-col gap-y-6 rounded-3xl bg-color-card px-6 py-9">
         <CardTitle className="text-2xl font-semibold text-color-title">
-          Hi, I&apos;m Taha 👋
+          {data?.pageTitle}
         </CardTitle>
 
         <CardDescription className="text-xl text-color-subtitle">
-          Lead product designer, currently working at Naqshava Tech
+          {data?.description}
         </CardDescription>
       </Card>
 
       <Link href={`${targetUrl}/about`}>
         <TextCard
-          title={`Passionate about design and enjoy solving problems.`}
+          title={data?.aboutDescription || '---'}
           heading="A B O U T"
-          className="group relative h-[200px] bg-color-card"
+          className="group relative min-h-[200px] bg-color-card"
           headingClassName="text-sm"
           titleClassName="text-xl pt-4"
         >
           <Button
             variant="outline"
-            className="absolute bottom-6 right-8 flex h-12 w-12 items-center justify-center rounded-full bg-transparent p-0"
+            className="absolute bottom-6 right-8 flex h-12 w-12 items-center justify-center rounded-full bg-color-card p-0"
           >
             <Arrow className="!h-5 !w-5 text-color-subtitle transition-transform duration-500 group-hover:rotate-45" />
           </Button>
@@ -61,17 +80,21 @@ export default function MobileVersion(): ReactElement {
       </Link>
 
       <div className="group relative h-[244px] w-full overflow-hidden rounded-[32px]">
-        <Link href={`${targetUrl}/BoostPro`}>
+        <Link href={`${targetUrl}/${data?.projects[0]?.id}`}>
           <Image
-            src="/images/landing-image-one.png"
-            alt="image"
+            src={
+              data?.projects[0]?.mainImageUrl || '/images/landing-image-one.png'
+            }
+            alt="Project-image-1"
             className="transform transition-transform duration-700"
             objectFit="cover"
             fill
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-100 transition-opacity duration-300">
             <div className="absolute bottom-4 flex w-full items-center justify-between px-4">
-              <p className="text-xl text-white">Boost Pro</p>
+              <p className="text-xl text-white">
+                {data?.projects[0]?.name || '---'}
+              </p>
               <Arrow className="h-5 w-5 rotate-45 text-white transition-transform duration-700" />
             </div>
           </div>
@@ -79,17 +102,65 @@ export default function MobileVersion(): ReactElement {
       </div>
 
       <div className="group relative h-[244px] w-full overflow-hidden rounded-[32px]">
-        <Link href={`${targetUrl}/BoostPro`}>
+        <Link href={`${targetUrl}/${data?.projects[1]?.id}}`}>
           <Image
             className="transform transition-transform duration-700"
-            src="/assets/jpg/product-pic.jpg"
-            alt="image"
+            src={
+              data?.projects[1]?.mainImageUrl || '/assets/jpg/product-pic.jpg'
+            }
+            alt="Project-image-1"
             objectFit="cover"
             fill
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-100 transition-opacity duration-300">
             <div className="absolute bottom-4 flex w-full items-center justify-between px-4">
-              <p className="text-xl text-white">Boost Pro</p>
+              <p className="text-xl text-white">
+                {data?.projects[1]?.name || '---'}
+              </p>
+              <Arrow className="h-5 w-5 rotate-45 text-white transition-transform duration-700" />
+            </div>
+          </div>
+        </Link>
+      </div>
+
+      <div className="group relative h-[244px] w-full overflow-hidden rounded-[32px]">
+        <Link href={`${targetUrl}/${data?.projects[2]?.id}}`}>
+          <Image
+            className="transform transition-transform duration-700"
+            src={
+              data?.projects[2]?.mainImageUrl || '/assets/jpg/product-pic.jpg'
+            }
+            alt="Project-image-2"
+            objectFit="cover"
+            fill
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-100 transition-opacity duration-300">
+            <div className="absolute bottom-4 flex w-full items-center justify-between px-4">
+              <p className="text-xl text-white">
+                {data?.projects[2]?.name || '---'}
+              </p>
+              <Arrow className="h-5 w-5 rotate-45 text-white transition-transform duration-700" />
+            </div>
+          </div>
+        </Link>
+      </div>
+
+      <div className="group relative h-[244px] w-full overflow-hidden rounded-[32px]">
+        <Link href={`${targetUrl}/${data?.projects[3]?.id}}`}>
+          <Image
+            className="transform transition-transform duration-700"
+            src={
+              data?.projects[3]?.mainImageUrl || '/assets/jpg/product-pic.jpg'
+            }
+            alt="Project-image-3"
+            objectFit="cover"
+            fill
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-100 transition-opacity duration-300">
+            <div className="absolute bottom-4 flex w-full items-center justify-between px-4">
+              <p className="text-xl text-white">
+                {data?.projects[3]?.name || '---'}
+              </p>
               <Arrow className="h-5 w-5 rotate-45 text-white transition-transform duration-700" />
             </div>
           </div>
@@ -97,15 +168,6 @@ export default function MobileVersion(): ReactElement {
       </div>
 
       <div className="flex w-full gap-x-3">
-        {/* <Card className="flex h-[184px] w-2/3 flex-col rounded-3xl bg-color-card p-5">
-          <CardTitle className="h-full text-xl font-semibold text-color-title">
-            Stack I use
-          </CardTitle>
-
-          <CardContent className="h-full p-0">
-            <LogoSlider />
-          </CardContent>
-        </Card> */}
         <Card className="flex h-[184px] w-2/3 flex-col rounded-3xl bg-color-card p-5">
           <div className="flex h-full flex-col justify-between">
             <CardTitle className="mb-6 text-xl font-semibold text-color-title">
@@ -127,42 +189,52 @@ export default function MobileVersion(): ReactElement {
         </Card>
       </div>
 
-      <CardComponent className="h-[270px]" title="S E R V I C E S">
+      <CardComponent className="!h-[270px] !p-6" title="S E R V I C E S">
         <Slider />
       </CardComponent>
 
-      <Card className="flex flex-col gap-y-8 rounded-3xl p-6">
+      <Card className="flex flex-col gap-y-8 rounded-3xl bg-color-card p-6">
         <CardTitle className="text-xl font-semibold text-color-title">
           Have a project in mind?
         </CardTitle>
-
-        <Button
-          variant="outline"
-          className="mb-2.5 flex h-11 w-full items-center justify-center rounded-2xl bg-transparent"
+        <Copy
+          className="text- w-full !rounded-2xl bg-color-bg"
+          textClassName="!text-base"
+          textShouldBeCopied={data?.email || '#'}
         >
           Copy email
-        </Button>
+        </Copy>
       </Card>
 
       <div className="flex w-full gap-x-2">
         <Card className="flex h-16 w-full items-center justify-center rounded-xl">
-          <InstagramLogo className="text-color-subtitle" />
+          <Link href={data?.instagramUrl || '#'} target="_blank">
+            <InstagramLogo className="text-color-subtitle" />
+          </Link>
         </Card>
 
         <Card className="flex h-16 w-full items-center justify-center rounded-xl">
-          <DribbbleLogo className="text-color-subtitle" />
+          <Link href={data?.dribbleUrl || '#'} target="_blank">
+            <DribbbleLogo className="text-color-subtitle" />
+          </Link>
         </Card>
 
         <Card className="flex h-16 w-full items-center justify-center rounded-xl">
-          <BehanceLogo className="text-color-subtitle" />
+          <Link href={data?.behanceUrl || '#'} target="_blank">
+            <BehanceLogo className="text-color-subtitle" />
+          </Link>
         </Card>
 
         <Card className="flex h-16 w-full items-center justify-center rounded-xl">
-          <LinkedinLogo className="text-color-subtitle" />
+          <Link href={data?.linkedinUrl || '#'} target="_blank">
+            <LinkedinLogo className="text-color-subtitle" />
+          </Link>
         </Card>
 
         <Card className="flex h-16 w-full items-center justify-center rounded-xl">
-          <GmailLogo className="text-color-subtitle" />
+          <Link href={data?.email || '#'} target="_blank">
+            <GmailLogo className="text-color-subtitle" />
+          </Link>
         </Card>
       </div>
     </div>
