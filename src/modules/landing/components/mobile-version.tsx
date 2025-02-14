@@ -22,7 +22,7 @@ import DribbbleLogo from '~/public/assets/svg/dribbble-icon.svg';
 import InstagramLogo from '~/public/assets/svg/instagram-icon.svg';
 import BehanceLogo from '~/public/assets/svg/behance-icon.svg';
 import LinkedinLogo from '~/public/assets/svg/linkdin-icon.svg';
-import GmailLogo from '~/public/assets/svg/gmail-icon.svg';
+import TelegramLogo from '~/public/assets/svg/telegram-icon.svg';
 
 import Slider from './slider.component';
 import { Banner } from './banner.component';
@@ -102,7 +102,7 @@ export default function MobileVersion(): ReactElement {
       </div>
 
       <div className="group relative h-[244px] w-full overflow-hidden rounded-[32px]">
-        <Link href={`${targetUrl}/${data?.projects[1]?.id}}`}>
+        <Link href={`${targetUrl}/${data?.projects[1]?.id}`}>
           <Image
             className="transform transition-transform duration-700"
             src={
@@ -124,7 +124,7 @@ export default function MobileVersion(): ReactElement {
       </div>
 
       <div className="group relative h-[244px] w-full overflow-hidden rounded-[32px]">
-        <Link href={`${targetUrl}/${data?.projects[2]?.id}}`}>
+        <Link href={`${targetUrl}/${data?.projects[2]?.id}`}>
           <Image
             className="transform transition-transform duration-700"
             src={
@@ -146,7 +146,7 @@ export default function MobileVersion(): ReactElement {
       </div>
 
       <div className="group relative h-[244px] w-full overflow-hidden rounded-[32px]">
-        <Link href={`${targetUrl}/${data?.projects[3]?.id}}`}>
+        <Link href={`${targetUrl}/${data?.projects[3]?.id}`}>
           <Image
             className="transform transition-transform duration-700"
             src={
@@ -233,7 +233,7 @@ export default function MobileVersion(): ReactElement {
 
         <Card className="flex h-16 w-full items-center justify-center rounded-xl">
           <Link href={data?.email || '#'} target="_blank">
-            <GmailLogo className="text-color-subtitle" />
+            <TelegramLogo className="text-color-subtitle" />
           </Link>
         </Card>
       </div>
