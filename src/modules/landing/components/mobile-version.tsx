@@ -45,7 +45,7 @@ export default function MobileVersion(): ReactElement {
   }
   if (isError && !isSuccess) {
     return (
-      <h2 className="ml-10 mt-10 text-xl md-max:hidden">
+      <h2 className="ml-10 mt-10 text-xl md:hidden">
         something went wrong ... !
       </h2>
     );

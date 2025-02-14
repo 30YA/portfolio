@@ -26,11 +26,7 @@ function AboutModule() {
   );
 
   if (isError) {
-    return (
-      <h2 className="ml-10 mt-10 text-xl md-max:hidden">
-        something went wrong ... !
-      </h2>
-    );
+    return <h2 className="ml-10 mt-10 text-xl">something went wrong ... !</h2>;
   }
   return (
     <div className="mx-auto flex h-full w-full animate-enter flex-col gap-10 pb-16 pt-9 md:w-[85%] lg:w-4/5 md-max:pb-0">
