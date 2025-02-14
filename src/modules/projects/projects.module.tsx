@@ -3,6 +3,7 @@ import React from 'react';
 import { type Metadata } from 'next';
 import { useRouter, useParams } from 'next/navigation';
 import Link from 'next/link';
+import Image from 'next/image';
 
 import CardComponent from '@/components/common/card';
 import useGetPortfolio from '@/api/get-portfolio/get-portfolio.api';
@@ -11,7 +12,6 @@ import { type Projects as ProjectsType } from '@/types/get-portfolio.type';
 import CloseBtn from '~/public/assets/svg/close-btn.svg';
 import TopRightArrow from '~/public/assets/svg/top-right-arrow.svg';
 
-import Images from './components/images.component';
 import ProjectSkeleton from './components/project-skeleteon';
 
 export const metadata: Metadata = {
@@ -112,7 +112,46 @@ function Projects() {
               </div>
             </CardComponent>
           </div>
-          <Images />
+          <div className="flex flex-col gap-4">
+            {project?.images?.length && project?.mainImageUrl && (
+              <>
+                <Image
+                  width={1200}
+                  height={650}
+                  className="w-full rounded-[32px]"
+                  src={project.mainImageUrl}
+                  alt="Product Image main"
+                />
+                {project.images[0].url && (
+                  <Image
+                    width={1200}
+                    height={764}
+                    className="w-full rounded-[32px] border border-color-stroke"
+                    src={project.images[0].url}
+                    alt="Product Image 1"
+                  />
+                )}
+                {project.images[1].url && (
+                  <Image
+                    width={1200}
+                    height={764}
+                    className="w-full rounded-[32px] border border-color-stroke"
+                    src={project.images[1].url}
+                    alt="Product Image 1"
+                  />
+                )}
+                {project.images[2].url && (
+                  <Image
+                    width={1200}
+                    height={764}
+                    className="w-full rounded-[32px] border border-color-stroke"
+                    src={project.images[2].url}
+                    alt="Product Image 1"
+                  />
+                )}
+              </>
+            )}
+          </div>
         </div>
       )}
     </div>

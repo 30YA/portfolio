@@ -59,7 +59,7 @@ export interface Projects {
   userId: number | null;
 }
 
-interface ProjectImages {
+export interface ProjectImages {
   id: number | null;
   project: string | null;
   projectId: number | null;
