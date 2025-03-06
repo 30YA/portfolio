@@ -9,14 +9,13 @@ export const getPortfolio: GetPortfolioType = async (person) => {
   const client = new Client();
 
   return await client.get(
-    `/GetPortfolito/%7BName%7D?Name=${person}`
-    // `/GetPortfolito/%7BName%7D?Name=${process.env.TARGET_URL}`
+    `/GetPortfolito/%7BName%7D?Name=${window.location.host}`
   );
 };
 
 export default function useGetPortfolio(person: string) {
   return useQuery({
-    queryKey: ['Get-Portoolio'],
+    queryKey: ['Get-Portfolio'],
 
     queryFn: async () => await getPortfolio(person),
 

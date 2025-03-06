@@ -2,7 +2,6 @@ import React, { type ReactElement } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useTheme } from 'next-themes';
-import { useParams } from 'next/navigation';
 
 import {
   Card,
@@ -31,16 +30,14 @@ import DesktopSkeleton from './desktop-skeleton';
 
 export default function DesktopVersion(): ReactElement {
   const { setTheme, theme } = useTheme();
-  const currPath = useParams();
-  const targetUrl = currPath?.['target-url'] as string;
+  // const currPath = useParams();
+  // const targetUrl = currPath?.['target-url'] as string;
   const themeChanger = (e: boolean) => {
     if (e) setTheme('dark');
     else setTheme('light');
   };
 
-  const { data, isError, isSuccess, isFetching } = useGetPortfolio(
-    targetUrl || ''
-  );
+  const { data, isError, isSuccess, isFetching } = useGetPortfolio('');
 
   if (isFetching) {
     return <DesktopSkeleton />;
@@ -69,7 +66,7 @@ export default function DesktopVersion(): ReactElement {
             </Card>
 
             <div className="group relative w-[260px] cursor-pointer overflow-hidden rounded-[32px]">
-              <Link href={`${targetUrl}/${data?.projects[0]?.id}`}>
+              <Link href={`/${data?.projects[0]?.id}`}>
                 <Image
                   src={
                     data?.projects[0]?.mainImageUrl ||
@@ -92,7 +89,7 @@ export default function DesktopVersion(): ReactElement {
             </div>
 
             <div className="group relative w-[260px] cursor-pointer overflow-hidden rounded-[32px]">
-              <Link href={`${targetUrl}/${data?.projects[1]?.id}`}>
+              <Link href={`/${data?.projects[1]?.id}`}>
                 <Image
                   className="transform transition-transform duration-700 group-hover:scale-110"
                   src={
@@ -117,7 +114,7 @@ export default function DesktopVersion(): ReactElement {
 
           <div className="flex w-full grow gap-4">
             <div className="group relative w-[25%] grow cursor-pointer overflow-hidden rounded-[32px]">
-              <Link href={`${targetUrl}/${data?.projects[2]?.id || '#'}`}>
+              <Link href={`/${data?.projects[2]?.id || '#'}`}>
                 <Image
                   className="transform transition-transform duration-700 group-hover:scale-110"
                   src={
@@ -139,7 +136,7 @@ export default function DesktopVersion(): ReactElement {
               </Link>
             </div>
 
-            <Link href={`${targetUrl}/about`} className="w-[50%]">
+            <Link href={`/about`} className="w-[50%]">
               <TextCard
                 title={data?.aboutDescription || '---'}
                 heading="A B O U T"
@@ -156,7 +153,7 @@ export default function DesktopVersion(): ReactElement {
             </Link>
 
             <div className="group relative w-[25%] cursor-pointer overflow-hidden rounded-[32px]">
-              <Link href={`${targetUrl}/${data?.projects[3]?.id || '#'}`}>
+              <Link href={`/${data?.projects[3]?.id || '#'}`}>
                 <Image
                   className="transform transition-transform duration-700 group-hover:scale-110"
                   src={
@@ -252,7 +249,7 @@ export default function DesktopVersion(): ReactElement {
           </div>
 
           <Link
-            href={`${targetUrl}/${data?.projects[4]?.id || '#'}`}
+            href={`/${data?.projects[4]?.id || '#'}`}
             className="group relative h-[360px] w-full grow overflow-hidden rounded-[32px] xl-max:h-[255px] xl-max:w-[380px]"
           >
             <Image

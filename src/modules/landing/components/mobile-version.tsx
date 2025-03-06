@@ -2,7 +2,6 @@ import React, { type ReactElement } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useTheme } from 'next-themes';
-import { useParams } from 'next/navigation';
 
 import {
   Card,
@@ -29,16 +28,14 @@ import { Banner } from './banner.component';
 import MobileSkeleton from './mobile-skeleton';
 
 export default function MobileVersion(): ReactElement {
-  const currPath = useParams();
-  const targetUrl = currPath?.['target-url'] as string;
+  // const currPath = useParams();
+  // const targetUrl = currPath?.['target-url'] as string;
   const { setTheme, theme } = useTheme();
   const themeChanger = (e: boolean) => {
     if (e) setTheme('dark');
     else setTheme('light');
   };
-  const { data, isError, isSuccess, isFetching } = useGetPortfolio(
-    targetUrl || ''
-  );
+  const { data, isError, isSuccess, isFetching } = useGetPortfolio('');
 
   if (isFetching) {
     return <MobileSkeleton />;
@@ -62,7 +59,7 @@ export default function MobileVersion(): ReactElement {
         </CardDescription>
       </Card>
 
-      <Link href={`${targetUrl}/about`}>
+      <Link href={`/about`}>
         <TextCard
           title={data?.aboutDescription || '---'}
           heading="A B O U T"
@@ -80,7 +77,7 @@ export default function MobileVersion(): ReactElement {
       </Link>
 
       <div className="group relative h-[244px] w-full overflow-hidden rounded-[32px]">
-        <Link href={`${targetUrl}/${data?.projects[0]?.id}`}>
+        <Link href={`/${data?.projects[0]?.id}`}>
           <Image
             src={
               data?.projects[0]?.mainImageUrl || '/images/landing-image-one.png'
@@ -102,7 +99,7 @@ export default function MobileVersion(): ReactElement {
       </div>
 
       <div className="group relative h-[244px] w-full overflow-hidden rounded-[32px]">
-        <Link href={`${targetUrl}/${data?.projects[1]?.id}`}>
+        <Link href={`/${data?.projects[1]?.id}`}>
           <Image
             className="transform transition-transform duration-700"
             src={
@@ -124,7 +121,7 @@ export default function MobileVersion(): ReactElement {
       </div>
 
       <div className="group relative h-[244px] w-full overflow-hidden rounded-[32px]">
-        <Link href={`${targetUrl}/${data?.projects[2]?.id}`}>
+        <Link href={`/${data?.projects[2]?.id}`}>
           <Image
             className="transform transition-transform duration-700"
             src={
@@ -146,7 +143,7 @@ export default function MobileVersion(): ReactElement {
       </div>
 
       <div className="group relative h-[244px] w-full overflow-hidden rounded-[32px]">
-        <Link href={`${targetUrl}/${data?.projects[3]?.id}`}>
+        <Link href={`/${data?.projects[3]?.id}`}>
           <Image
             className="transform transition-transform duration-700"
             src={
