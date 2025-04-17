@@ -28,8 +28,6 @@ import { Banner } from './banner.component';
 import MobileSkeleton from './mobile-skeleton';
 
 export default function MobileVersion(): ReactElement {
-  // const currPath = useParams();
-  // const targetUrl = currPath?.['target-url'] as string;
   const { setTheme, theme } = useTheme();
   const themeChanger = (e: boolean) => {
     if (e) setTheme('dark');
@@ -61,7 +59,7 @@ export default function MobileVersion(): ReactElement {
 
       <Link href={`/about`}>
         <TextCard
-          title={data?.aboutDescription || '---'}
+          title={data?.aboutDescription ?? '---'}
           heading="A B O U T"
           className="group relative min-h-[200px] bg-color-card"
           headingClassName="text-sm"
@@ -77,20 +75,30 @@ export default function MobileVersion(): ReactElement {
       </Link>
 
       <div className="group relative h-[244px] w-full overflow-hidden rounded-[32px]">
+        <Image
+          src={data?.profileUrl ?? '/images/landing-image-one.png'}
+          alt="Project-image-1"
+          className="transform transition-transform duration-700"
+          objectFit="cover"
+          fill
+        />
+      </div>
+
+      <div className="group relative h-[244px] w-full overflow-hidden rounded-[32px]">
         <Link href={`/${data?.projects[0]?.id}`}>
           <Image
+            className="transform transition-transform duration-700"
             src={
-              data?.projects[0]?.mainImageUrl || '/images/landing-image-one.png'
+              data?.projects[0]?.mainImageUrl ?? '/assets/jpg/product-pic.jpg'
             }
             alt="Project-image-1"
-            className="transform transition-transform duration-700"
             objectFit="cover"
             fill
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-100 transition-opacity duration-300">
             <div className="absolute bottom-4 flex w-full items-center justify-between px-4">
               <p className="text-xl text-white">
-                {data?.projects[0]?.name || '---'}
+                {data?.projects[0]?.name ?? '---'}
               </p>
               <Arrow className="h-5 w-5 rotate-45 text-white transition-transform duration-700" />
             </div>
@@ -103,16 +111,16 @@ export default function MobileVersion(): ReactElement {
           <Image
             className="transform transition-transform duration-700"
             src={
-              data?.projects[1]?.mainImageUrl || '/assets/jpg/product-pic.jpg'
+              data?.projects[1]?.mainImageUrl ?? '/assets/jpg/product-pic.jpg'
             }
-            alt="Project-image-1"
+            alt="Project-image-2"
             objectFit="cover"
             fill
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-100 transition-opacity duration-300">
             <div className="absolute bottom-4 flex w-full items-center justify-between px-4">
               <p className="text-xl text-white">
-                {data?.projects[1]?.name || '---'}
+                {data?.projects[1]?.name ?? '---'}
               </p>
               <Arrow className="h-5 w-5 rotate-45 text-white transition-transform duration-700" />
             </div>
@@ -125,29 +133,7 @@ export default function MobileVersion(): ReactElement {
           <Image
             className="transform transition-transform duration-700"
             src={
-              data?.projects[2]?.mainImageUrl || '/assets/jpg/product-pic.jpg'
-            }
-            alt="Project-image-2"
-            objectFit="cover"
-            fill
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-100 transition-opacity duration-300">
-            <div className="absolute bottom-4 flex w-full items-center justify-between px-4">
-              <p className="text-xl text-white">
-                {data?.projects[2]?.name || '---'}
-              </p>
-              <Arrow className="h-5 w-5 rotate-45 text-white transition-transform duration-700" />
-            </div>
-          </div>
-        </Link>
-      </div>
-
-      <div className="group relative h-[244px] w-full overflow-hidden rounded-[32px]">
-        <Link href={`/${data?.projects[3]?.id}`}>
-          <Image
-            className="transform transition-transform duration-700"
-            src={
-              data?.projects[3]?.mainImageUrl || '/assets/jpg/product-pic.jpg'
+              data?.projects[2]?.mainImageUrl ?? '/assets/jpg/product-pic.jpg'
             }
             alt="Project-image-3"
             objectFit="cover"
@@ -156,7 +142,7 @@ export default function MobileVersion(): ReactElement {
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-100 transition-opacity duration-300">
             <div className="absolute bottom-4 flex w-full items-center justify-between px-4">
               <p className="text-xl text-white">
-                {data?.projects[3]?.name || '---'}
+                {data?.projects[2]?.name ?? '---'}
               </p>
               <Arrow className="h-5 w-5 rotate-45 text-white transition-transform duration-700" />
             </div>
@@ -197,7 +183,7 @@ export default function MobileVersion(): ReactElement {
         <Copy
           className="text- w-full !rounded-2xl bg-color-bg"
           textClassName="!text-base"
-          textShouldBeCopied={data?.email || '#'}
+          textShouldBeCopied={data?.email ?? '#'}
         >
           Copy email
         </Copy>
@@ -205,31 +191,31 @@ export default function MobileVersion(): ReactElement {
 
       <div className="flex w-full gap-x-2">
         <Card className="flex h-16 w-full items-center justify-center rounded-xl">
-          <Link href={data?.instagramUrl || '#'} target="_blank">
+          <Link href={data?.instagramUrl ?? '#'} target="_blank">
             <InstagramLogo className="text-color-subtitle" />
           </Link>
         </Card>
 
         <Card className="flex h-16 w-full items-center justify-center rounded-xl">
-          <Link href={data?.dribbleUrl || '#'} target="_blank">
+          <Link href={data?.dribbleUrl ?? '#'} target="_blank">
             <DribbbleLogo className="text-color-subtitle" />
           </Link>
         </Card>
 
         <Card className="flex h-16 w-full items-center justify-center rounded-xl">
-          <Link href={data?.behanceUrl || '#'} target="_blank">
+          <Link href={data?.behanceUrl ?? '#'} target="_blank">
             <BehanceLogo className="text-color-subtitle" />
           </Link>
         </Card>
 
         <Card className="flex h-16 w-full items-center justify-center rounded-xl">
-          <Link href={data?.linkedinUrl || '#'} target="_blank">
+          <Link href={data?.linkedinUrl ?? '#'} target="_blank">
             <LinkedinLogo className="text-color-subtitle" />
           </Link>
         </Card>
 
         <Card className="flex h-16 w-full items-center justify-center rounded-xl">
-          <Link href={data?.email || '#'} target="_blank">
+          <Link href={data?.email ?? '#'} target="_blank">
             <TelegramLogo className="text-color-subtitle" />
           </Link>
         </Card>
