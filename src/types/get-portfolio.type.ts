@@ -78,6 +78,7 @@ export interface GetPortfolioResType {
   dribbleUrl: string | null;
   behanceUrl: string | null;
   spotifyUrl: string | null;
+  profileUrl: string;
   projects: Projects[];
   aboutId: number;
   about: AboutType;

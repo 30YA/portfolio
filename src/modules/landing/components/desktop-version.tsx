@@ -30,8 +30,6 @@ import DesktopSkeleton from './desktop-skeleton';
 
 export default function DesktopVersion(): ReactElement {
   const { setTheme, theme } = useTheme();
-  // const currPath = useParams();
-  // const targetUrl = currPath?.['target-url'] as string;
   const themeChanger = (e: boolean) => {
     if (e) setTheme('dark');
     else setTheme('light');
@@ -69,7 +67,7 @@ export default function DesktopVersion(): ReactElement {
               <Link href={`/${data?.projects[0]?.id}`}>
                 <Image
                   src={
-                    data?.projects[0]?.mainImageUrl ||
+                    data?.projects[0]?.mainImageUrl ??
                     '/images/landing-image-one.png'
                   }
                   alt="image"
@@ -80,7 +78,7 @@ export default function DesktopVersion(): ReactElement {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100">
                   <div className="absolute bottom-4 flex w-full items-center justify-between px-4">
                     <p className="text-xl text-white">
-                      {data?.projects[0]?.name || '---'}
+                      {data?.projects[0]?.name ?? '---'}
                     </p>
                     <Arrow className="h-5 w-5 text-white transition-transform duration-700 group-hover:rotate-45" />
                   </div>
@@ -93,7 +91,7 @@ export default function DesktopVersion(): ReactElement {
                 <Image
                   className="transform transition-transform duration-700 group-hover:scale-110"
                   src={
-                    data?.projects[1]?.mainImageUrl ||
+                    data?.projects[1]?.mainImageUrl ??
                     '/images/landing-image-one.png'
                   }
                   alt="image"
@@ -103,7 +101,7 @@ export default function DesktopVersion(): ReactElement {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100">
                   <div className="absolute bottom-4 flex w-full items-center justify-between px-4">
                     <p className="text-xl text-white">
-                      {data?.projects[1]?.name || '---'}
+                      {data?.projects[1]?.name ?? '---'}
                     </p>
                     <Arrow className="h-5 w-5 text-white transition-transform duration-700 group-hover:rotate-45" />
                   </div>
@@ -113,32 +111,19 @@ export default function DesktopVersion(): ReactElement {
           </div>
 
           <div className="flex w-full grow gap-4">
-            <div className="group relative w-[25%] grow cursor-pointer overflow-hidden rounded-[32px]">
-              <Link href={`/${data?.projects[2]?.id || '#'}`}>
-                <Image
-                  className="transform transition-transform duration-700 group-hover:scale-110"
-                  src={
-                    data?.projects[2]?.mainImageUrl ||
-                    '/images/landing-image-one.png'
-                  }
-                  alt="image"
-                  objectFit="cover"
-                  fill
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                  <div className="absolute bottom-4 flex w-full items-center justify-between px-4">
-                    <p className="text-xl text-white">
-                      {data?.projects[2]?.name || '---'}
-                    </p>
-                    <Arrow className="h-5 w-5 text-white transition-transform duration-700 group-hover:rotate-45" />
-                  </div>
-                </div>
-              </Link>
+            <div className="group relative w-[25%] grow overflow-hidden rounded-[32px]">
+              <Image
+                className="transform transition-transform duration-700 group-hover:scale-110"
+                src={data?.profileUrl ?? '/images/landing-image-one.png'}
+                alt="image"
+                objectFit="cover"
+                fill
+              />
             </div>
 
             <Link href={`/about`} className="w-[50%]">
               <TextCard
-                title={data?.aboutDescription || '---'}
+                title={data?.aboutDescription ?? '---'}
                 heading="A B O U T"
                 titleClassName="line-clamp-4"
                 className="group relative h-full min-h-[268px] flex-grow bg-color-card md:basis-[calc(100%/4.5*2)]"
@@ -153,11 +138,11 @@ export default function DesktopVersion(): ReactElement {
             </Link>
 
             <div className="group relative w-[25%] cursor-pointer overflow-hidden rounded-[32px]">
-              <Link href={`/${data?.projects[3]?.id || '#'}`}>
+              <Link href={`/${data?.projects[2]?.id ?? '#'}`}>
                 <Image
                   className="transform transition-transform duration-700 group-hover:scale-110"
                   src={
-                    data?.projects[3]?.mainImageUrl ||
+                    data?.projects[2]?.mainImageUrl ??
                     '/assets/jpg/product-pic.jpg'
                   }
                   alt="image"
@@ -167,7 +152,7 @@ export default function DesktopVersion(): ReactElement {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100">
                   <div className="absolute bottom-4 flex w-full items-center justify-between px-4">
                     <p className="text-xl text-white">
-                      {data?.projects[3]?.name || '---'}
+                      {data?.projects[2]?.name ?? '---'}
                     </p>
                     <Arrow className="h-5 w-5 text-white transition-transform duration-700 group-hover:rotate-45" />
                   </div>
@@ -208,19 +193,19 @@ export default function DesktopVersion(): ReactElement {
         <div className="flex w-[360px] flex-col gap-y-4 xl-max:mt-4 xl-max:w-full xl-max:flex-row xl-max:gap-x-4">
           <div className="flex flex-col gap-4 xl-max:justify-around xl-max:gap-0">
             <div className="flex justify-between gap-4">
-              <Link href={data?.dribbleUrl || '#'} target="_blank">
+              <Link href={data?.dribbleUrl ?? '#'} target="_blank">
                 <Card className="group flex h-20 w-20 grow items-center justify-center rounded-3xl bg-color-card transition-colors hover:bg-red-400">
                   <DribbbleLogo className="text-color-subtitle group-hover:text-white" />
                 </Card>
               </Link>
 
-              <Link href={data?.instagramUrl || '#'} target="_blank">
+              <Link href={data?.instagramUrl ?? '#'} target="_blank">
                 <Card className="group flex h-20 w-20 grow items-center justify-center rounded-3xl bg-color-card transition-colors hover:bg-orange-400">
                   <InstagramLogo className="text-color-subtitle group-hover:text-white" />
                 </Card>
               </Link>
 
-              <Link href={data?.behanceUrl || '#'} target="_blank">
+              <Link href={data?.behanceUrl ?? '#'} target="_blank">
                 <Card className="group flex h-20 w-20 grow items-center justify-center rounded-3xl bg-color-card transition-colors hover:bg-blue-500">
                   <BehanceLogo className="text-color-subtitle group-hover:text-white" />
                 </Card>
@@ -228,19 +213,19 @@ export default function DesktopVersion(): ReactElement {
             </div>
 
             <div className="flex justify-between gap-4">
-              <Link href={data?.linkedinUrl || '#'} target="_blank">
+              <Link href={data?.linkedinUrl ?? '#'} target="_blank">
                 <Card className="group flex h-20 w-20 grow items-center justify-center rounded-3xl bg-color-card transition-colors hover:bg-green-500">
                   <LinkedinLogo className="text-color-subtitle group-hover:text-white" />
                 </Card>
               </Link>
 
-              <Link href={data?.email || '#'} target="_blank">
+              <Link href={data?.email ?? '#'} target="_blank">
                 <Card className="group flex h-20 w-20 grow items-center justify-center rounded-3xl bg-color-card transition-colors hover:bg-yellow-500">
                   <TelegramLogo className="text-color-subtitle group-hover:text-white" />
                 </Card>
               </Link>
 
-              <Link href={data?.spotifyUrl || '#'} target="_blank">
+              <Link href={data?.spotifyUrl ?? '#'} target="_blank">
                 <Card className="group flex h-20 w-20 grow items-center justify-center rounded-3xl bg-color-card transition-colors hover:bg-gray-500">
                   <SpotifyLogo className="text-color-subtitle group-hover:text-white" />
                 </Card>
@@ -249,12 +234,12 @@ export default function DesktopVersion(): ReactElement {
           </div>
 
           <Link
-            href={`/${data?.projects[4]?.id || '#'}`}
+            href={`/${data?.projects[3]?.id ?? '#'}`}
             className="group relative h-[360px] w-full grow overflow-hidden rounded-[32px] xl-max:h-[255px] xl-max:w-[380px]"
           >
             <Image
               src={
-                data?.projects[4]?.mainImageUrl || '/assets/jpg/product-pic.jpg'
+                data?.projects[3]?.mainImageUrl ?? '/assets/jpg/product-pic.jpg'
               }
               alt="image"
               fill
@@ -264,7 +249,7 @@ export default function DesktopVersion(): ReactElement {
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100">
               <div className="absolute bottom-4 flex w-full items-center justify-between px-4">
                 <p className="text-xl text-white">
-                  {data?.projects[4]?.name || '---'}
+                  {data?.projects[3]?.name ?? '---'}
                 </p>
                 <Arrow className="h-5 w-5 text-white transition-transform duration-700 group-hover:rotate-45" />
               </div>
@@ -278,7 +263,7 @@ export default function DesktopVersion(): ReactElement {
             <Copy
               className="text- w-full cursor-copy !rounded-2xl bg-color-bg"
               textClassName="!text-base"
-              textShouldBeCopied={data?.email || '#'}
+              textShouldBeCopied={data?.email ?? '#'}
             >
               Copy email
             </Copy>
